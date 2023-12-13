@@ -22,7 +22,31 @@ const { NotImplementedError } = require('../extensions/index.js');
  * }
  *
  */
-function getDNSStats(domains) {}
+function getDNSStats(domains) {
+  let results = {};
+
+  domains.forEach((str) => {
+    let arr = str.split('.');
+    arr = arr.reverse();
+    let zone = '.' + arr[0];
+    let site = zone + '.' + arr[1];
+    let reversedUrl;
+    if (arr.length > 2) {
+      reversedUrl = '.' + arr.join('.');
+    }
+    let domArr = [zone, site, reversedUrl];
+    domArr.forEach((el) => {
+      if (el) {
+        if (el in results) {
+          results[el] += 1;
+        } else {
+          results[el] = 1;
+        }
+      }
+    });
+  });
+  return results;
+}
 
 module.exports = {
   getDNSStats,
