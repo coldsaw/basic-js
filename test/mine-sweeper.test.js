@@ -18,7 +18,7 @@ describe('Minesweeper', () => {
         [1, 2, 1],
         [2, 1, 1],
         [1, 1, 1],
-      ],
+      ]
     );
 
     assert.deepEqual(
@@ -29,7 +29,24 @@ describe('Minesweeper', () => {
       [
         [0, 0, 0],
         [0, 0, 0],
-      ],
+      ]
+    );
+
+    assert.deepEqual(
+      minesweeper([
+        [false, false, false, true, false],
+        [true, true, true, true, false],
+        [true, true, true, true, false],
+        [true, true, true, true, false],
+        [false, true, false, true, false],
+      ]),
+      [
+        [2, 3, 4, 2, 2],
+        [3, 5, 6, 4, 3],
+        [5, 8, 8, 5, 3],
+        [4, 6, 7, 4, 3],
+        [3, 3, 5, 2, 2],
+      ]
     );
   });
 });
